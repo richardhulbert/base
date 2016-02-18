@@ -1,1 +1,6 @@
-Modules.server = {};
+Modules.server = {
+  startup(){
+    console.log('startup called: ');
+
+    }
+};

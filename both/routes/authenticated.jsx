@@ -15,3 +15,10 @@ authenticatedRoutes.route( '/dashboard', {
     ReactLayout.render( Default, { yield: <Dashboard /> } );
   }
 });
+
+authenticatedRoutes.route( '/hidden', {
+  name: 'hidden',
+  action() {
+    ReactLayout.render( Default, { yield: <Hidden /> } );
+  }
+});

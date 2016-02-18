@@ -1,17 +1,9 @@
 AppHeader = React.createClass({
-  brandLink() {
-    if ( !Meteor.loggingIn() && !Meteor.userId() ) {
-      return FlowRouter.path( 'login' );
-    }
-
-    return FlowRouter.path( 'index' );
-  },
-  navigationItems() {
-    if ( !Meteor.loggingIn() && Meteor.user() ) {
-      return <AuthenticatedNavigation />;
-    } else {
-      return <PublicNavigation />;
-    }
+  mixins: [ ReactMeteorData ],
+  getMeteorData() {
+    return {
+      brandLink: !!Meteor.user() ? '/' : '/login'
+    };
   },
   render() {
     return (
@@ -24,9 +16,9 @@ AppHeader = React.createClass({
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href={this.brandLink()}>Base in React</a>
+            <a className="navbar-brand" href={this.data.brandLink}>AuthExample</a>
           </div>
-          {this.navigationItems()}
+          {this.props.hasUser ? <AuthenticatedNavigation /> : <PublicNavigation />}
         </div>
       </nav>
     );

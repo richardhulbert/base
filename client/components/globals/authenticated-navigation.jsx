@@ -2,22 +2,27 @@ AuthenticatedNavigation = React.createClass({
   currentUserEmail() {
     return Meteor.user().emails[0].address;
   },
+  logout( event ) {
+    event.preventDefault();
+    return Meteor.logout( () => FlowRouter.go( '/login' ) );
+  },
   render() {
-    return (
-      <div id="navbar-collapse" className="collapse navbar-collapse">
-        <ul className="nav navbar-nav">
-          <li className={FlowHelpers.currentRoute( 'index' )}><a href="/">Index</a></li>
-          <li className={FlowHelpers.currentRoute( 'dashboard' )}><a href="/dashboard">Dashboard</a></li>
-        </ul>
-        <ul className="nav navbar-nav navbar-right">
-          <li className="dropdown">
-            <a href="#" className="dropdown-toggle" data-toggle="dropdown">{this.currentUserEmail()} <span className="caret"></span></a>
-            <ul className="dropdown-menu" role="menu">
-              <li onClick={Meteor.logout}><a href="#">Logout</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    );
+    return <div id="navbar-collapse" className="collapse navbar-collapse">
+      <ul className="nav navbar-nav">
+        <li className={FlowHelpers.currentRoute( 'hidden' )}><a href="/hidden">Hidden</a></li>
+      </ul>
+      <ul className="nav navbar-nav navbar-right">
+        <li className="dropdown">
+          <a href="#" className="user-profile-toggle dropdown-toggle clearfix" data-toggle="dropdown">
+            {this.currentUserEmail()}
+            <span className="caret"></span>
+          </a>
+          <ul className="dropdown-menu" role="menu">
+            <li><a href="/preferences">Account Preferences</a></li>
+            <li className="logout" onClick={this.logout}><a href="#">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>;
   }
 });
