@@ -10,6 +10,7 @@ AuthenticatedNavigation = React.createClass({
     return <div id="navbar-collapse" className="collapse navbar-collapse">
       <ul className="nav navbar-nav">
         <li className={FlowHelpers.currentRoute( 'hidden' )}><a href="/hidden">Hidden</a></li>
+        <li className={FlowHelpers.currentRoute( 'hidden' )}><a href="/dashboard">dashboard</a></li>
       </ul>
       <ul className="nav navbar-nav navbar-right">
         <li className="dropdown">

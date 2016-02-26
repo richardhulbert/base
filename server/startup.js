@@ -14,7 +14,7 @@ function createUsers () {
 
     users = [
       {first_name: "Jane",last_name:"Doe", email: "jane.doe@example.com", roles: []},
-      {first_name: "Hamza",last_name:"Bing", email: "hamza.bing@codevanilla.com", roles: ['secrets']},
+      {first_name: "Hamza",last_name:"Bing", email: "hamza.bing@codevanilla.com", roles: ['customer']},
       {first_name: "Alice",last_name:"Bear", email: "alice.bear@codevanilla.com", roles: ['manage-users']},
       {first_name: "Richard",last_name:"Hulbert", email: "richard@richardhulbert.com", roles: ['admin']}
     ];

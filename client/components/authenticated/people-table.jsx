@@ -5,9 +5,9 @@ PeopleTable = React.createClass({
         <table className="table table-bordered">
           <thead>
           <tr>
-            <th></th>
             <th>Name</th>
             <th>Email Address</th>
+            <th>Roll</th>
           </tr>
           </thead>
           <tbody>

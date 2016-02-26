@@ -1,13 +1,14 @@
 Dashboard = React.createClass({
   mixins: [ ReactMeteorData ],
   getMeteorData() {
-    let subscription = Meteor.subscribe( 'dashboard' );
+    let subscription = Meteor.subscribe('userslist');
 
     return {
       isLoading: !subscription.ready(),
-      people: People.find().fetch()
+      people: Meteor.users.find().fetch()
     };
   },
+
   render() {
     if ( this.data.isLoading ) {
       return <Loading />;
