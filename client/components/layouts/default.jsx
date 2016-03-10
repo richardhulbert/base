@@ -1,5 +1,7 @@
+ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 Default = React.createClass({
   mixins: [ ReactMeteorData ],
+  transitionName :'sweep-left',
   getMeteorData() {
     return {
       loggingIn: Meteor.loggingIn(),
@@ -16,6 +18,7 @@ Default = React.createClass({
       }
     };
   },
+
   loading() {
     return <div className="loading"></div>;
   },
@@ -25,8 +28,11 @@ Default = React.createClass({
   render() {
     return <div className="app-root">
       <AppHeader hasUser={this.data.hasUser} />
-      <div className="container">
+
+      <div className="container transition-container">
+        <ReactCSSTransitionGroup transitionName={this.transitionName} transitionAppear={true}  transitionAppearTimeout={300} transitionEnterTimeout={300} transitionLeaveTimeout={300}>
         {this.data.loggingIn ? this.loading() : this.getView()}
+        </ReactCSSTransitionGroup>
       </div>
     </div>;
   }

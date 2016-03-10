@@ -1,13 +1,12 @@
 PeopleTable = React.createClass({
   render() {
     return (
-      <div className="table-responsive">
+
         <table className="table table-bordered">
           <thead>
           <tr>
-            <th>Name</th>
             <th>Email Address</th>
-            <th>Roll</th>
+            <th colSpan="2">Roll</th>
           </tr>
           </thead>
           <tbody>
@@ -16,7 +15,7 @@ PeopleTable = React.createClass({
           })}
           </tbody>
         </table>
-      </div>
+
     );
   }
 });

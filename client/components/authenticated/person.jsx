@@ -6,8 +6,7 @@ Person = React.createClass({
     return '';
   },
   showEmails(){
-    let addresses = ''
-    console.log(this.props.person.emails)
+    let addresses = '';
     for (var i=0;i<this.props.person.emails.length;i++){
       var m =  this.props.person.emails[i];
       addresses+= m.verified?m.address:m.address+"(unverified)";
@@ -17,11 +16,14 @@ Person = React.createClass({
   render() {
 
     return (
-
       <tr>
-        <td>{this.props.person.profile.first_name+' '+this.props.person.profile.last_name}</td>
         <td>{this.showEmails()}</td>
         <td>{this.showRoles()}</td>
+        <td>
+          <button className="role-button btn btn-primary btn-xs" data-toggle="modal" data-target=".bs-example-modal-lg">
+          <span className="glyphicon glyphicon-edit" aria-hidden="true" />
+          </button>
+        </td>
       </tr>
     );
   }

@@ -1,0 +1,88 @@
+.transition-container{
+  position: relative;
+}
+
+.default-enter {
+  opacity: 0.01;
+  &.default-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+}
+
+.default-leave {
+  opacity: 1;
+  position: absolute;
+  top:0;
+  width:100%;
+  &.default-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+  }
+
+}
+
+.default-appear {
+  opacity: 0.01;
+  &.default-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }
+}
+
+.sweep-left-enter {
+  left: -1000px;
+  position: relative;
+  &.sweep-left-enter-active {
+    left: 0;
+    transition: left 300ms ease-in;
+  }
+}
+
+.sweep-left-leave {
+  left: 0;
+  position: absolute;
+  top:0;
+  width:100%;
+  &.sweep-left-leave-active {
+    left: 1000px;
+    transition: left 300ms ease-in;
+  }
+
+}
+
+.sweep-left-appear {
+  opacity: 0.01;
+  &.sweep-left-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }
+}
+
+.force-right{
+
+  .sweep-left-enter {
+    left: 1000px;
+    position: relative;
+    &.sweep-left-enter-active {
+      left: 0;
+      transition: left 300ms ease-in;
+    }
+  }
+
+  .sweep-left-leave {
+    left: 0;
+    position: absolute;
+    top:0;
+    width:100%;
+    &.sweep-left-leave-active {
+      left: -1000px;
+      transition: left 300ms ease-in;
+    }
+
+  }
+
+
+
+}
+

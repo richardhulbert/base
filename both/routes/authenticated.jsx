@@ -1,5 +1,25 @@
+const authenticatedRedirect = (ctx,redirect) => {
+  $('.transition-container').removeClass('force-right')
+ if(ctx.path=='/dashboard') $('.transition-container').addClass('force-right')
+  if ( !Meteor.loggingIn() && !Meteor.userId() ) {
+    FlowRouter.go( 'login' );
+  }
+};
+
+const blockUnauthorizedAdmin = ( context, redirect ) => {
+  if ( Meteor.userId() && !Roles.userIsInRole( Meteor.userId(), 'admin' ) ) {
+    Modules.both.redirectUser( { redirect: redirect } );
+  }
+}
+const blockUnauthorizedManager = ( context, redirect ) => {
+  if ( Meteor.userId() && !Roles.userIsInRole( Meteor.userId(), [ 'admin', 'manager' ] ) ) {
+    Modules.both.redirectUser( { redirect: redirect } );
+  }
+};
+
 const authenticatedRoutes = FlowRouter.group({
-  name: 'authenticated'
+  name: 'authenticated',
+  triggersEnter: [ authenticatedRedirect ]
 });
 
 authenticatedRoutes.route( '/', {
@@ -12,13 +32,36 @@ authenticatedRoutes.route( '/', {
 authenticatedRoutes.route( '/dashboard', {
   name: 'dashboard',
   action() {
-    ReactLayout.render( Default, { yield: <Dashboard /> } );
+    ReactLayout.render( Default, { yield: <Dashboard key={"dashboard_key"}   /> } );
   }
 });
 
 authenticatedRoutes.route( '/hidden', {
   name: 'hidden',
   action() {
-    ReactLayout.render( Default, { yield: <Hidden /> } );
+    ReactLayout.render( Default, { yield: <Hidden key={"hidden_key"}  /> } );
+  }
+});
+
+authenticatedRoutes.route( '/users', {
+  name: 'users',
+  triggersEnter: [ blockUnauthorizedAdmin ],
+  action() {
+    ReactLayout.render(Default, { yield: <Users /> } );
+  }
+});
+
+authenticatedRoutes.route( '/managers', {
+  name: 'managers',
+  triggersEnter: [ blockUnauthorizedManager ],
+  action() {
+    ReactLayout.render( Default, { yield: <Managers /> } );
+  }
+});
+
+authenticatedRoutes.route( '/employees', {
+  name: 'employees',
+  action() {
+    ReactLayout.render( Default, { yield: <Employees /> } );
   }
 });

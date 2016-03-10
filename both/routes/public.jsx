@@ -1,5 +1,12 @@
+const publicRedirect = ( context, redirect ) => {
+  if ( Meteor.userId() ) {
+    Modules.both.redirectUser( { redirect: redirect } );
+  }
+};
+
 const publicRoutes = FlowRouter.group({
-  name: 'public'
+  name: 'public',
+  triggersEnter: [ publicRedirect ]
 });
 
 publicRoutes.route( '/signup', {
@@ -29,3 +36,12 @@ publicRoutes.route( '/reset-password/:token', {
     ReactLayout.render( Default, { yield: <ResetPassword /> } );
   }
 });
+
+publicRoutes.route( '/invite/:token', {
+  name: 'invite',
+  action() {
+    ReactLayout.render( Default, { yield: <Invite />} );
+  }
+});
+
+

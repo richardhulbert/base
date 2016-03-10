@@ -1,7 +1,7 @@
 Dashboard = React.createClass({
   mixins: [ ReactMeteorData ],
   getMeteorData() {
-    let subscription = Meteor.subscribe('userslist');
+    let subscription = Meteor.subscribe('users');
 
     return {
       isLoading: !subscription.ready(),
@@ -11,10 +11,11 @@ Dashboard = React.createClass({
 
   render() {
     if ( this.data.isLoading ) {
-      return <Loading />;
+
+      return <Loading key="dashboard"/>;
     } else {
       return (
-        <PeopleTable people={this.data.people} />
+        <PeopleTable key="dashboard" people={this.data.people} />
       );
     }
   }

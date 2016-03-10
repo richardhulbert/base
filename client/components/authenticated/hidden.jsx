@@ -1,6 +1,9 @@
 Hidden = React.createClass({
+   render(){
+    return (
 
-  render(){
-    return <div className="well"> this is a hidden route</div>
+      <div key="hidden" className="well transition-right"> this is a hidden route</div>
+    )
+
   }
 })
