@@ -1,3 +1,5 @@
+$trans-time:300ms;
+
 .transition-container{
   position: relative;
 }
@@ -6,7 +8,7 @@
   opacity: 0.01;
   &.default-enter-active {
     opacity: 1;
-    transition: opacity 500ms ease-in;
+    transition: opacity $trans-time ease-in;
   }
 }
 
@@ -17,7 +19,7 @@
   width:100%;
   &.default-leave-active {
     opacity: 0.01;
-    transition: opacity 300ms ease-in;
+    transition: opacity $trans-time ease-in;
   }
 
 }
@@ -26,62 +28,69 @@
   opacity: 0.01;
   &.default-appear-active {
     opacity: 1;
-    transition: opacity .5s ease-in;
+    transition: opacity $trans-time ease-in;
   }
 }
 
-.sweep-left-enter {
+.sweep-enter {
   left: -1000px;
   position: relative;
-  &.sweep-left-enter-active {
+  &.sweep-enter-active {
     left: 0;
-    transition: left 300ms ease-in;
+    transition: left $trans-time ease-in;
   }
 }
 
-.sweep-left-leave {
+.sweep-leave {
   left: 0;
   position: absolute;
   top:0;
   width:100%;
-  &.sweep-left-leave-active {
+  &.sweep-leave-active {
     left: 1000px;
-    transition: left 300ms ease-in;
+    transition: left $trans-time ease-in;
   }
 
 }
 
-.sweep-left-appear {
+.sweep-appear {
   opacity: 0.01;
-  &.sweep-left-appear-active {
+  &.sweep-appear-active {
     opacity: 1;
-    transition: opacity .5s ease-in;
+    transition: opacity $trans-time ease-in;
   }
 }
 
 .force-right{
 
-  .sweep-left-enter {
+  .sweep-enter {
     left: 1000px;
     position: relative;
-    &.sweep-left-enter-active {
+    &.sweep-enter-active {
       left: 0;
-      transition: left 300ms ease-in;
+      transition: left $trans-time ease-in;
     }
   }
 
-  .sweep-left-leave {
+  .sweep-leave {
     left: 0;
     position: absolute;
     top:0;
     width:100%;
-    &.sweep-left-leave-active {
+    &.sweep-leave-active {
       left: -1000px;
-      transition: left 300ms ease-in;
+      transition: left $trans-time ease-in;
     }
 
   }
-
+  .sweep-appear {
+    left: 1000px;
+    position: relative;
+    &.sweep-appear-active {
+      left: 0;
+      transition: left $trans-time ease-in;
+    }
+  }
 
 
 }

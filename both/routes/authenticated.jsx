@@ -1,6 +1,4 @@
 const authenticatedRedirect = (ctx,redirect) => {
-  $('.transition-container').removeClass('force-right')
- if(ctx.path=='/dashboard') $('.transition-container').addClass('force-right')
   if ( !Meteor.loggingIn() && !Meteor.userId() ) {
     FlowRouter.go( 'login' );
   }

@@ -1,7 +1,7 @@
 ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 Default = React.createClass({
   mixins: [ ReactMeteorData ],
-  transitionName :'sweep-left',
+  transitionName :'default',
   getMeteorData() {
     return {
       loggingIn: Meteor.loggingIn(),
